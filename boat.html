@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Knewave&family=Orbitron:wght@300&family=Chewy&family=Rock+Salt&display=swap" rel="stylesheet">
+    <style>
+        *,
+        ::before,
+        ::after {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 470px;
+            height: 440px;
+            border-radius: 50%;
+            background-color: lightblue;
+            /* border: 20px solid antiquewhite; */
+            box-shadow: 0px 0px 10px lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .boat {
+            width: 150px;
+            height: 120px;
+            background-color: brown;
+            border-top-right-radius: 45%;
+            border-bottom-right-radius: 45%;
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+            position: absolute;
+            animation: floating 3s ease-in-out infinite;
+            z-index: 8;
+        }
+
+        @keyframes floating {
+            50% {
+                transform: translate(0, 20px);
+            }
+        }
+
+        .boat::before {
+            content: "";
+            height: 60px;
+            position: absolute;
+            left: -20px;
+            top: 30px;
+            border-left: 40px solid brown;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            /* border-radius: 5%; */
+        }
+
+        .boat::after {
+            content: "";
+            height: 60px;
+            position: absolute;
+            left: -30px;
+            top: 30px;
+            border-right: 20px solid transparent;
+            border-left: 10px solid chocolate;
+            border-radius: 30%;
+        }
+
+        .head {
+            position: absolute;
+            width: 70px;
+            height: 20px;
+            background-color: chocolate;
+            border-radius: 50%;
+            top: -3px;
+            left: 40px;
+        }
+
+        .head::before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 10px;
+            border-radius: 4px;
+            background-color: dimgray;
+            top: -25px;
+            left: 30px;
+        }
+
+        .head::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 30px;
+            border-radius: 4px;
+            background-color: dimgray;
+            top: -25px;
+            left: 30px;
+        }
+
+        .light {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            top: -27.5px;
+            left: 60px;
+            animation: shining 1s linear infinite;
+        }
+
+        @keyframes shining {
+            50% {
+                box-shadow: 0px 0px 30px darkred;
+                background-color: rgb(191, 8, 8);
+            }
+        }
+
+        .mouth {
+            width: 50px;
+            height: 50px;
+            /* background-color: chocolate; */
+            position: absolute;
+            border-left: 35px solid transparent;
+            border-right: 15px solid ghostwhite;
+            right: -11px;
+            top: 35px;
+            border-radius: 50%;
+            z-index: 0;
+            /* border: 4px solid ghostwhite; */
+        }
+
+        .tail {
+            width: 25px;
+            height: 15px;
+            /* border-radius: 2px; */
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            background-color: dimgray;
+            position: absolute;
+            left: -55px;
+            top: 50px;
+        }
+
+        .tail::before,
+        .tail::after {
+            content: "";
+            width: 12px;
+            height: 25px;
+            background-color: red;
+            position: absolute;
+            border-radius: 40%;
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%;
+            top: -20px;
+            left: 10px;
+        }
+
+        .tail::after {
+            top: 10px;
+            border-radius: 50%;
+            border-top-left-radius: 40%;
+            border-top-right-radius: 40%;
+        }
+
+
+        .window {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            right: 10px;
+            top: 20px;
+            background-color: ghostwhite;
+            border-radius: 50%;
+            border-bottom: 10px solid brown;
+            border-left: 10px solid brown;
+        }
+
+        .window::before,
+        .window::after {
+            content: "";
+            width: 25px;
+            height: 25px;
+            border-radius: 45%;
+            background-color: ghostwhite;
+            position: absolute;
+            right: 60px;
+            top: 28px;
+            border: 3px outset chocolate;
+        }
+
+        .window::after {
+            right: 90px;
+            top: 25px;
+        }
+
+        .wave {
+            width: 40px;
+            height: 15px;
+            border-radius: 8px;
+            background-color: white;
+            position: absolute;
+            right: 60px;
+            top: 100px;
+            border: 3px solid white;
+            animation: swimming 3s linear infinite;
+        }
+
+        .wave::before,
+        .wave::after {
+            /* content: ""; */
+            width: 60px;
+            height: 15px;
+            border-radius: 8px;
+            /* background-color: lightblue; */
+            position: absolute;
+            transform: translate(100px, 30px);
+            border: 3px solid white;
+            animation: swimming-b 6s linear infinite;
+        }
+
+        .wave::after {
+            /* content: ""; */
+            width: 20px;
+            background-color: white;
+            transform: translate(50px, 20px);
+            animation: swimming-b 8s linear infinite;
+        }
+
+        .wave-w {
+            background-color: white;
+        }
+
+        .wave-2 {
+            width: 50px;
+            top: 280px;
+            right: 0px;
+            animation: swimming 5s linear infinite;
+        }
+
+        .wave-3 {
+            width: 100px;
+            top: 350px;
+            right: 50px;
+            animation: swimming 4s linear infinite;
+        }
+
+        .wave-1 {
+            width: 80px;
+            top: 50px;
+            right: 100px;
+            animation: swimming 4s linear infinite;
+        }
+
+        .wave-4 {
+            top: 160px;
+            right: 120px;
+        }
+
+        @keyframes swimming {
+            100% {
+                transform: translate(-500px, 60px);
+                opacity: 0;
+            }
+        }
+
+        /* @keyframes swimming-b {
+            100% {
+                transform: translate(-400px, 80px);
+            }
+        } */
+
+         @keyframes swimming-word-r {
+            0% {
+                transform: translate(400px, 0px) rotate(0deg);
+            }
+            50% {
+                transform: translate(0px, -50px);
+            }
+            100% {
+                transform: translate(-450px, 0px)rotate(80deg);
+            }
+        } 
+
+        @keyframes swimming-word-l {
+            0% {
+                transform: translate(400px, 0px) rotate(0deg);
+            }
+            50% {
+                transform: translate(0px, 50px);
+            }
+            100% {
+                transform: translate(-450px, 0px)rotate(-40deg);
+            }
+        }  
+
+        .content {
+            color:white;
+            font-size: 60px;
+            z-index: 9;
+            font-family: 'Bungee Outline', cursive;
+            position: absolute;
+            display: flex;
+            font-weight: 1000;
+            letter-spacing: 15px;
+            top:100px;
+        }
+        .word {
+            position: absolute;
+            animation: swimming-word-r 5s linear infinite;
+        }
+        .word-l {
+            left: -190px;
+            top:40px;
+            transform: rotate(25deg);
+            animation: swimming-word-l 5s linear infinite;
+        }
+
+        .word-o {
+            transform: rotate(-25deg);
+            left: -130px;
+            top:120px;
+        }
+
+        .word-a {
+            transform: rotate(15deg);
+            top:80px;
+            left: -70px;
+            animation: swimming-word-l 5s linear infinite;
+        }
+        .word-d {
+            transform: rotate(5deg);
+            top: 140px;
+            left: 0px;
+        }
+
+        .word-i {
+            transform: rotate(-10deg);
+            top:70px;
+            left: 70px;
+            animation: swimming-word-l 5s linear infinite;
+        }
+
+        .word-n {
+            transform: rotate(20deg);
+            top: 120px;
+            left: 120px;
+            /* animation: swimming-word-l 5s linear infinite; */
+        }
+
+        .word-g {
+            transform: rotate(-20deg);
+            left: 190px;
+            top:20px;
+            animation: swimming-word-l 5s linear infinite;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="boat">
+            <div class="head">
+                <div class="light"></div>
+            </div>
+            <div class="mouth"></div>
+            <div class="window"></div>
+            <div class="tail"></div>
+        </div>
+        <div class="wave wave-w wave-1"></div>
+        <div class="wave wave-b wave-2"></div>
+        <div class="wave wave-w wave-3"></div>
+        <div class="wave wave-w wave-4"></div>
+        <div class="wave wave-b wave-5"></div>
+        <div class="content">
+            <div class="word word-l">L</div>
+            <div class="word word-o">O</div>
+            <div class="word word-a">A</div>
+            <div class="word word-d">D</div>
+            <div class="word word-i">I</div>
+            <div class="word word-n">N</div>
+            <div class="word word-g">G</div>
+        </div>
+    </div>
+</body>
+
+</html>
